@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Локальное демо создания заявки на подключение услуги и проверки её статуса.">
+  <title>Заявка на подключение услуги</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="layout">
+    <header class="intro">
+      <p class="eyebrow">Учебное демо</p>
+      <h1>Заявка на подключение услуги</h1>
+      <p>Оформите заявку на вымышленных данных и проверьте её по номеру.</p>
+    </header>
+
+    <div class="panels">
+      <section class="panel" aria-labelledby="create-title">
+        <h2 id="create-title">Новая заявка</h2>
+        <form id="create-form" novalidate>
+          <div class="field">
+            <label for="applicant-alias">Псевдоним клиента</label>
+            <input id="applicant-alias" name="applicant_alias" placeholder="Например, Демо-клиент" required aria-describedby="alias-error">
+            <p class="field-error" id="alias-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="service-type">Услуга</label>
+            <select id="service-type" name="service_type" required aria-describedby="service-error">
+              <option value="">Выберите услугу</option>
+              <option value="home_internet">Домашний интернет</option>
+              <option value="esim">eSIM</option>
+            </select>
+            <p class="field-error" id="service-error" hidden></p>
+          </div>
+          <button type="submit">Отправить заявку</button>
+        </form>
+        <div id="create-result" class="result" role="status" hidden></div>
+      </section>
+
+      <section class="panel" aria-labelledby="lookup-title">
+        <h2 id="lookup-title">Статус заявки</h2>
+        <form id="lookup-form" novalidate>
+          <div class="field">
+            <label for="application-id">Номер заявки</label>
+            <input id="application-id" name="application_id" placeholder="Вставьте номер заявки" required autocomplete="off" spellcheck="false">
+          </div>
+          <div class="actions">
+            <button type="submit">Проверить статус</button>
+            <button type="button" id="sample-button" class="secondary">Подставить пример</button>
+          </div>
+        </form>
+        <div id="lookup-result" class="result" role="status" hidden></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
